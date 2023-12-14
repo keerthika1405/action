@@ -1,0 +1,17 @@
+name: artifact
+on : [push]
+
+env:
+  ARTIFACT_NAME: myartifact
+
+jobs:
+  main:
+    runs-on: windows-latest
+    steps:
+     - name: check out the code 
+       uses: actions/checkout@v2
+     - name: uploadthe atrifact
+       uses: actions/upload-artifact@v2
+       with:
+         name: ${{ env.ARTIFACT_NAME }}
+         path: .
