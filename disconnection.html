@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+</head>
+<body>
+
+<!-- Your main content goes here -->
+<h1>hello</h1>
+<div id="error-message" style="display: none; text-align: center; margin-top: 100px; color: red;">
+    <h1>Oops! Something went wrong.</h1>
+    <p>Please check your internet connection and try again.</p>
+</div>
+
+<script>
+    function showErrorMessage() {
+        var errorMessage = document.getElementById('error-message');
+        errorMessage.style.display = 'block';
+    }
+
+    function hideErrorMessage() {
+        var errorMessage = document.getElementById('error-message');
+        errorMessage.style.display = 'none';
+    }
+
+    function checkInternetConnection() {
+        if (navigator.onLine) {
+            // Online, hide the error message
+            hideErrorMessage();
+        } else {
+            // Offline, show the error message
+            showErrorMessage();
+        }
+    }
+
+    // Initial check on page load
+    checkInternetConnection();
+
+    // Set up an event listener to check when the connection status changes
+    window.addEventListener('online', checkInternetConnection);
+    window.addEventListener('offline', checkInternetConnection);
+</script>
+
+</body>
+</html>
